@@ -1,0 +1,36 @@
+<table class="table">
+<thead>
+  <tr>
+    <th>#</th>
+    <th>Offer_Percentage</th>
+    <th>Offer_start</th>
+    <th>Offer_end</th>
+    <th>Actions</th>
+  </tr>
+</thead>
+<tbody>
+
+              <?php
+    foreach($this->offers as $key => $value)
+    {
+            ?>
+    <tr>
+        
+        <td> <?= $value['id'] ?> </td>
+        <td><?= $value['offer_per'] ?></td>
+        <td><?= $value['offer_start'] ?></td>
+        <td><?= $value['offer_end'] ?></td>
+            
+        <td> <a href="<?= 'offerdetails/oid/'.$value['id'] ?>" ><button class="btn btn-primary"  type="button" name="button"> Details </button></a> </td>
+        <td>  <a  href="<?= 'editoffer/oid/'.$value['id'] ?>"><button class="btn btn-default" type="button" name="button"> edit  </button></a> </td>
+        <td>  <a  href="<?= 'deleteoffer/oid/'.$value['id'] ?>"><button class="btn btn-danger" type="button" name="button"> Delete  </button></a> </td>    
+        
+        
+        
+        
+	 </tr>
+			    <?php } ?>
+			  </tbody>
+
+
+		</table>

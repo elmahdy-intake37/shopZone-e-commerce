@@ -1,0 +1,33 @@
+<?php
+  $usersNs = new Zend_Session_NameSpace("members");
+                $usersNs->userType;
+        
+foreach ($this->indexSearch as $key => $value){
+    ?>
+      <div class="search-list-item-name">
+          <?php
+if($usersNs->userType=='shop'){
+    ?>
+       <a href="<?='/shop/productdetails/pid/'.$value['id']?>">     <?php
+    echo $value['name'];
+    ?></a>   
+          <?php
+}elseif($usersNs->userType=='user'){
+          ?>
+          <a href="<?='/user/detailsproduct/uid/'.$value['id']?>">     <?php
+    echo $value['name'];
+    ?></a>
+          <?php
+} else {
+    ?>
+             <a href="<?='/index/details-product/uid/'.$value['id']?>">     <?php
+    echo $value['name'];
+    ?></a>
+          <?php
+    
+}
+          ?>
+           </div>
+          <?php
+}
+?>

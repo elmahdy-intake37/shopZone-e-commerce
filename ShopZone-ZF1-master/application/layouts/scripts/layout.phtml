@@ -1,0 +1,732 @@
+
+<?php 
+$url=dirname(__DIR__,3)."/public/css/bootstrap.css";
+                $usersNs = new Zend_Session_NameSpace("members");
+                 $usersNs->userType;
+                
+?>
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>ShopZone</title>
+
+<script type='text/javascript' src="<?php $this->baseUrl() ?>/js/jquery-3.2.0.min.js"></script>
+
+<link href="<?php $this->baseUrl() ?>/css/bootstrap.css" rel='stylesheet' type='text/css' />
+<!-- jQuery (necessary JavaScript plugins) -->
+<!-- Custom Theme files -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>   
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<!-- Custom Theme files -->
+<!--//theme-style-->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Gretong Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Playfair+Display:400,700,900' rel='stylesheet' type='text/css'>
+<!-- start menu -->
+<link href="<?php $this->baseUrl() ?>/css/megamenu.css" rel="stylesheet" type="text/css" media="all" />
+<script type="text/javascript" src="<?php $this->baseUrl() ?>/js/megamenu.js"></script>
+<script>$(document).ready(function(){$(".megamenu").megamenu();});</script>
+<script src="<?php $this->baseUrl() ?>/js/menu_jquery.js"></script>
+<script src="<?php $this->baseUrl() ?>/js/simpleCart.min.js"> </script>
+<link href="<?php $this->baseUrl() ?>/css/style.css" rel='stylesheet' type='text/css' />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
+
+</head>
+<body>
+<!-- header_top -->
+<div class="top_bg">
+  <div class="container">
+    <div class="header_top">
+      <div class="top_right">
+        <ul>
+        
+          <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">language <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+            <li><a href="?ln=En" style="color:black;">En</a></li>
+          <li><a href="?ln=Ar" style="color:black;">Ar</a></li>
+        </ul>
+      </li>
+        </ul>
+      </div>
+     
+        <div class="clearfix"> </div>
+    </div>
+  </div>
+</div>
+
+            <div class="header_bg">
+<div class="container">
+  <div class="header">
+  <div class="head-t">
+    <div class="header_right">
+      <div class="rgt-bottom">
+      <?php
+$auth=Zend_Auth::getInstance();
+    $storage=$auth->getStorage();
+    $userdata=$storage->read();
+    $fbsession = new Zend_Session_Namespace('facebook');
+    $gpsession = new Zend_Session_Namespace('google');
+
+    if(!empty($userdata)|| !empty($fbsession->name) || !empty($gpsession->name))
+    {
+        if (!empty($fbsession->name)){
+          echo 'Welcome' ." " .$fbsession->name;
+        } elseif(!empty($gpsession->name)){
+          echo 'Welcome' ." " .$gpsession->name;
+
+            
+        } 
+            else{
+      // if authenticated and logged in 
+    ?>
+    
+   
+<?php echo 'Welcome' . " ".$userdata->name; 
+    
+
+?>
+           <div class="create_btn">
+        <a href="/<?=$userdata->type?>/index">Profile</a>
+      </div>
+  <a href="<?= '/user/listwishlist/pid/'.$userdata->id ?>" ><button class="btn btn-primary"  type="submit" name="button"> Show Me My List </button></a>    
+        <?php
+ 
+        
+        
+  }
+  
+  ?>
+  <div class="create_btn">
+        <a href="/index/logout">Logout</a>
+      </div>
+    <?php
+  }
+
+  else
+  {
+    ?>
+         <!-- <div class="reg">
+          <a href="/index/login">Login</a>
+        </div> -->
+          <div class="log">
+          <div class="login" >
+            <div id="loginContainer"><a href="/index/login"><span>Login</span></a>
+            </div>
+            </div>
+            </div>
+         <div class="reg">
+          <a href="/index/register">REGISTER</a>
+        </div>
+        <?php
+  }
+   ?>
+               
+       
+      <div class="cart box_1">
+        <a href="/user/displaycart">
+          <h3> <span class="simpleCart_total">$0.00</span> (<span id="simpleCart_quantity" class="simpleCart_quantity">0</span> items)<img src="<?php $this->baseUrl() ?>/images/bag.png" alt=""></h3>
+        </a>  
+        <p><a href="javascript:;" class="simpleCart_empty">(empty card)</a></p>
+        <div class="clearfix"> </div>
+      </div>
+      
+      <div class="clearfix"> </div>
+    </div>
+    <div class="search">
+        
+        <form>
+            <input type="text" value="" placeholder="search..." class="search" id="searchbox">
+        <input type="submit" value="">
+             <div id="display">
+    
+</div>
+      </form>
+   
+    </div>
+    <div class="clearfix"> </div>
+    </div>
+    <div class="clearfix"> </div>
+  </div>
+    <!-- start header menu -->
+    <ul class="megamenu skyblue">
+      <li class="active grid"><a class="color1" href="/<?=$usersNs->userType?>/">Home</a></li>
+      <li class="grid"><a class="color2" href="#">categories</a>
+        <div class="megapanel">
+         
+            <div class="col1">
+              <div class="h_nav">
+    
+                          <?php 
+                          
+                          
+       $db=Zend_Db_Table::getDefaultAdapter();
+       $max=$db->select()->from('category','*');
+        $stmt = $max->query();
+        $result = $stmt->fetchAll();
+       
+        for($i=0;$i < count($result);$i++){
+            
+            $id=$db->select()->from('product','*')
+            ->where('category=?',$result[$i]['id']);
+            
+            $stmttt = $id->query();
+            $resultt = $stmttt->fetchAll();
+            
+            
+            ?><div class="h_nav"><ul><li><h4>
+               <?php if($usersNs->userType=='shop'){
+                   ?>
+               
+          <a href="/shop/listproducts/cid/<?= $result[$i]['id']; ?>" ><?php
+            echo $result[$i]['name']; ?> </a>
+                            <?php
+               }elseif ($usersNs->userType=='user') {
+                   ?>
+               <a href="/user/listproduct/cid/<?php  echo $result[$i]['id']; ?>" ><?php
+            echo $result[$i]['name']; ?> </a>
+                            <?php
+                  
+              }else{
+                  ?>
+                             <a href="/index/list-product/uid/<?php  echo $result[$i]['id']; ?>" ><?php
+            echo $result[$i]['name']; ?> </a>
+                            <?php
+                            
+              }
+                            ?>
+             </h4></li></ul></div> <?php     
+        }
+        
+         
+       
+        ?>
+            
+              </div>              
+            </div>
+            </div>
+          
+      <li><a class="color4" href="#">New Arrivals</a>
+        <div class="megapanel">
+        
+            <div class="col1">
+              <div class="h_nav">
+                  
+                  
+             <?php         
+                     
+                      $new=$db->select()->from('product','*')
+                      ->order('date DESC')
+                      ->limit(10);
+        //$objRowSet = $this->fetchAll($max);
+
+         
+         $stmtment = $new->query();
+        $fresult = $stmtment->fetchAll();
+        
+                for($i=0;$i<sizeof($fresult);$i++){
+            ?><div class="h_nav"><ul><li><h4><a 
+                                
+                                <?php if($usersNs->userType=='shop'){
+                                     ?>
+                                href="/shop/productdetails/pid/<?php
+                                echo $fresult[$i]['id'];
+                                 }
+                                 
+                                elseif($usersNs->userType=='user'){
+                                    ?>
+                                href="/user/detailsproduct/uid/<?php
+                                echo $fresult[$i]['id'];
+                                    
+                                }
+                                else{
+                                    ?>
+                                  href="/index/details-Product/uid/<?php 
+                                  echo $fresult[$i]['id'];
+                                }
+                                ?>
+              "><?php
+            echo $fresult[$i]['name']; ?> </a>
+             </h4></li></ul></div> <?php     
+        }
+        
+        ?>
+                  
+  
+              </div>              
+            </div>
+            
+                
+        <li><a class="color5" href="#">New Offers</a>
+        <div class="megapanel">
+          <div class="row">
+            <div class="col1">
+              <div class="h_nav">
+                <h4>Offer Percentage</h4>
+                                  
+             <?php         
+                     
+                      $new1=$db->select()->from('offer','*')
+                      ->order('offer_end DESC')
+                      ->limit(10);
+        //$objRowSet = $this->fetchAll($max);
+
+         
+         $stmtm = $new1->query();
+        $ffresult = $stmtm->fetchAll();
+        
+                for($i=0;$i<sizeof($ffresult);$i++){
+            ?><div class="h_nav"><ul><li><h4><center><?php
+            echo $ffresult[$i]['offer_per']."%";
+            echo str_repeat(" ", 100);
+            
+            
+               
+
+        $new2=$db->select()->from('product','*')
+                 ->where('offer=?',$ffresult[$i]['id']);
+            
+        $stmtee = $new2->query();
+        $fffresult = $stmtee->fetchAll();
+        
+           for($y=0;$y<count($fffresult);$y++){
+               
+               if($usersNs->userType=='shop'){
+           ?> <a href="/shop/productdetails/pid/<?php echo $fffresult[$y]['id'];
+                   ?>
+              <?php
+               }
+               elseif($usersNs->userType=='user'){
+          
+                   ?>
+              
+              <a href="/user/detailsproduct/uid/<?php echo $fffresult[$y]['id'];
+                   ?>
+              <?php
+               }
+                else{
+                    ?>
+                    <a href="/index/details-Product/uid/<?php echo $fffresult[$y]['id'];}?>"> <?=$fffresult[$y]['name'];?>
+               <?php  }}
+           
+                   
+            
+            ?> 
+                            </a></center></h4></li></ul></div> <?php  
+                            
+        
+        
+        ?>
+            
+                
+              </div>              
+            </div>
+              </div>
+           
+        <li><a class="color6" href="#"></a>
+        <div class="megapanel">
+          <div class="row">
+            <div class="col1">
+              <div class="h_nav">
+                <h4>Clothing</h4>
+                <ul>
+                  <li><a href="women.html">new arrivals</a></li>
+                  <li><a href="women.html">men</a></li>
+                  <li><a href="women.html">women</a></li>
+                  <li><a href="women.html">accessories</a></li>
+                  <li><a href="women.html">kids</a></li>
+                  <li><a href="women.html">brands</a></li>
+                </ul> 
+              </div>              
+            </div>
+            <div class="col1">
+              <div class="h_nav">
+                <h4>kids</h4>
+                <ul>
+                  <li><a href="women.html">Pools&Tees</a></li>
+                  <li><a href="women.html">shirts</a></li>
+                  <li><a href="women.html">shorts</a></li>
+                  <li><a href="women.html">twinsets</a></li>
+                  <li><a href="women.html">kurts</a></li>
+                  <li><a href="women.html">jackets</a></li>
+                </ul> 
+              </div>              
+            </div>
+            <div class="col1">
+              <div class="h_nav">
+                <h4>Bags</h4>
+                <ul>
+                  <li><a href="women.html">Handbag</a></li>
+                  <li><a href="women.html">Slingbags</a></li>
+                  <li><a href="women.html">Clutches</a></li>
+                  <li><a href="women.html">Totes</a></li>
+                  <li><a href="women.html">Wallets</a></li>
+                  <li><a href="women.html">Laptopbags</a></li>
+                </ul> 
+              </div>                        
+            </div>
+            <div class="col1">
+              <div class="h_nav">
+                <h4>account</h4>
+                <ul>
+                  <li><a href="#">login</a></li>
+                  <li><a href="register.html">create an account</a></li>
+                  <li><a href="women.html">create wishlist</a></li>
+                  <li><a href="women.html">my shopping bag</a></li>
+                  <li><a href="women.html">brands</a></li>
+                  <li><a href="women.html">create wishlist</a></li>
+                </ul> 
+              </div>            
+            </div>
+            <div class="col1">
+              <div class="h_nav">
+                <h4>Accessories</h4>
+                <ul>
+                  <li><a href="women.html">Belts</a></li>
+                  <li><a href="women.html">Pens</a></li>
+                  <li><a href="women.html">Eyeglasses</a></li>
+                  <li><a href="women.html">accessories</a></li>
+                  <li><a href="women.html">Jewellery</a></li>
+                </ul> 
+              </div>
+            </div>
+            <div class="col1">
+              <div class="h_nav">
+                <h4>Footwear</h4>
+                <ul>
+                  <li><a href="women.html">new arrivals</a></li>
+                  <li><a href="women.html">men</a></li>
+                  <li><a href="women.html">women</a></li>
+                  <li><a href="women.html">accessories</a></li>
+                  <li><a href="women.html">kids</a></li>
+                  <li><a href="women.html">style videos</a></li>
+                </ul> 
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col2"></div>
+            <div class="col1"></div>
+            <div class="col1"></div>
+            <div class="col1"></div>
+            <div class="col1"></div>
+          </div>
+            </div>
+        </li>       
+      
+        <li><a class="color7" href="#"></a>
+        <div class="megapanel">
+          <div class="row">
+            <div class="col1">
+              <div class="h_nav">
+                <h4>Clothing</h4>
+                <ul>
+                  <li><a href="women.html">new arrivals</a></li>
+                  <li><a href="women.html">men</a></li>
+                  <li><a href="women.html">women</a></li>
+                  <li><a href="women.html">accessories</a></li>
+                  <li><a href="women.html">kids</a></li>
+                  <li><a href="women.html">brands</a></li>
+                </ul> 
+              </div>              
+            </div>
+            <div class="col1">
+              <div class="h_nav">
+                <h4>kids</h4>
+                <ul>
+                  <li><a href="women.html">Pools&Tees</a></li>
+                  <li><a href="women.html">shirts</a></li>
+                  <li><a href="women.html">shorts</a></li>
+                  <li><a href="women.html">twinsets</a></li>
+                  <li><a href="women.html">kurts</a></li>
+                  <li><a href="women.html">jackets</a></li>
+                </ul> 
+              </div>              
+            </div>
+            <div class="col1">
+              <div class="h_nav">
+                <h4>Bags</h4>
+                <ul>
+                  <li><a href="women.html">Handbag</a></li>
+                  <li><a href="women.html">Slingbags</a></li>
+                  <li><a href="women.html">Clutches</a></li>
+                  <li><a href="women.html">Totes</a></li>
+                  <li><a href="women.html">Wallets</a></li>
+                  <li><a href="women.html">Laptopbags</a></li>
+                </ul> 
+              </div>                        
+            </div>
+            <div class="col1">
+              <div class="h_nav">
+                <h4>account</h4>
+                <ul>
+                  <li><a href="#">login</a></li>
+                  <li><a href="register.html">create an account</a></li>
+                  <li><a href="women.html">create wishlist</a></li>
+                  <li><a href="women.html">my shopping bag</a></li>
+                  <li><a href="women.html">brands</a></li>
+                  <li><a href="women.html">create wishlist</a></li>
+                </ul> 
+              </div>            
+            </div>
+            <div class="col1">
+              <div class="h_nav">
+                <h4>Accessories</h4>
+                <ul>
+                  <li><a href="women.html">Belts</a></li>
+                  <li><a href="women.html">Pens</a></li>
+                  <li><a href="women.html">Eyeglasses</a></li>
+                  <li><a href="women.html">accessories</a></li>
+                  <li><a href="women.html">Watches</a></li>
+                  <li><a href="women.html">Jewellery</a></li>
+                </ul> 
+              </div>
+            </div>
+            <div class="col1">
+              <div class="h_nav">
+                <h4>Footwear</h4>
+                <ul>
+                  <li><a href="women.html">new arrivals</a></li>
+                  <li><a href="women.html">men</a></li>
+                  <li><a href="women.html">women</a></li>
+                  <li><a href="women.html">accessories</a></li>
+                  <li><a href="women.html">kids</a></li>
+                  <li><a href="women.html">style videos</a></li>
+                </ul> 
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col2"></div>
+            <div class="col1"></div>
+            <div class="col1"></div>
+            <div class="col1"></div>
+            <div class="col1"></div>
+          </div>
+            </div>
+        </li>       
+      
+        <li><a class="color8" href="#"></a>
+        <div class="megapanel">
+          <div class="row">
+            <div class="col1">
+              <div class="h_nav">
+                <h4>Clothing</h4>
+                <ul>
+                  <li><a href="women.html">new arrivals</a></li>
+                  <li><a href="women.html">men</a></li>
+                  <li><a href="women.html">women</a></li>
+                  <li><a href="women.html">accessories</a></li>
+                  <li><a href="women.html">kids</a></li>
+                  <li><a href="women.html">brands</a></li>
+                </ul> 
+              </div>              
+            </div>
+            <div class="col1">
+              <div class="h_nav">
+                <h4>kids</h4>
+                <ul>
+                  <li><a href="women.html">trends</a></li>
+                  <li><a href="women.html">sale</a></li>
+                  <li><a href="women.html">style videos</a></li>
+                  <li><a href="women.html">accessories</a></li>
+                  <li><a href="women.html">kids</a></li>
+                  <li><a href="women.html">style videos</a></li>
+                </ul> 
+              </div>              
+            </div>
+            <div class="col1">
+              <div class="h_nav">
+                <h4>Bags</h4>
+                <ul>
+                  <li><a href="women.html">trends</a></li>
+                  <li><a href="women.html">sale</a></li>
+                  <li><a href="women.html">style videos</a></li>
+                  <li><a href="women.html">accessories</a></li>
+                  <li><a href="women.html">kids</a></li>
+                  <li><a href="women.html">style videos</a></li>
+                </ul> 
+              </div>                        
+            </div>
+            <div class="col1">
+              <div class="h_nav">
+                <h4>account</h4>
+                <ul>
+                  <li><a href="#">login</a></li>
+                  <li><a href="register.html">create an account</a></li>
+                  <li><a href="women.html">create wishlist</a></li>
+                  <li><a href="women.html">my shopping bag</a></li>
+                  <li><a href="women.html">brands</a></li>
+                  <li><a href="women.html">create wishlist</a></li>
+                </ul> 
+              </div>            
+            </div>
+            <div class="col1">
+              <div class="h_nav">
+                <h4>Accessories</h4>
+                <ul>
+                  <li><a href="women.html">trends</a></li>
+                  <li><a href="women.html">sale</a></li>
+                  <li><a href="women.html">style videos</a></li>
+                  <li><a href="women.html">accessories</a></li>
+                  <li><a href="women.html">kids</a></li>
+                  <li><a href="women.html">style videos</a></li>
+                </ul> 
+              </div>
+            </div>
+            <div class="col1">
+              <div class="h_nav">
+                <h4>Footwear</h4>
+                <ul>
+                  <li><a href="women.html">new arrivals</a></li>
+                  <li><a href="women.html">men</a></li>
+                  <li><a href="women.html">women</a></li>
+                  <li><a href="women.html">accessories</a></li>
+                  <li><a href="women.html">kids</a></li>
+                  <li><a href="women.html">style videos</a></li>
+                </ul> 
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col2"></div>
+            <div class="col1"></div>
+            <div class="col1"></div>
+            <div class="col1"></div>
+            <div class="col1"></div>
+          </div>
+            </div>
+        </li>
+        
+     </ul> 
+  </div>
+</div>
+</div>
+
+
+
+
+
+<?php echo $this->layout()->content; ?>
+
+    <div class="foot-top">
+  <div class="container">
+    <div class="col-md-6 s-c">
+      <li>
+        <div class="fooll">
+          <h5>follow us on</h5>
+        </div>
+      </li>
+      <li>
+        <div class="social-ic">
+          <ul>
+            <li><a href="#"><i class="facebok"> </i></a></li>
+            <li><a href="#"><i class="twiter"> </i></a></li>
+            <li><a href="#"><i class="goog"> </i></a></li>
+            <li><a href="#"><i class="be"> </i></a></li>
+            <li><a href="#"><i class="pp"> </i></a></li>
+              <div class="clearfix"></div>  
+          </ul>
+        </div>
+      </li>
+        <div class="clearfix"> </div>
+    </div>
+    <div class="col-md-6 s-c">
+      <div class="stay">
+          
+            <div class="btn-1">
+            
+            </div>
+              <div class="clearfix"> </div>
+      </div>
+    </div>
+      <div class="clearfix"> </div>
+  </div>
+</div>
+<div class="footer">
+  <div class="container">
+    <div class="col-md-3 cust">
+      <h4>CUSTOMER CARE</h4>
+        <li><a href="#">Help Center</a></li>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="buy.html">How To Buy</a></li>
+        <li><a href="#">Delivery</a></li>
+    </div>
+    <div class="col-md-2 abt">
+      <h4>ABOUT US</h4>
+        <li><a href="#">Our Stories</a></li>
+        <li><a href="#">Press</a></li>
+        <li><a href="#">Career</a></li>
+        <li><a href="contact.html">Contact</a></li>
+    </div>
+    <div class="col-md-2 myac">
+      <h4>MY ACCOUNT</h4>
+        <li><a href="/index/register">Register</a></li>
+        <li><a href="/shop/displaycart">My Cart</a></li>
+        
+    </div>
+    <div class="col-md-5 our-st">
+      <div class="our-left">
+        <h4>OUR STORES</h4>
+      </div>
+      <div class="our-left1">
+        <div class="cr_btn">
+          <a href="#">SOLO</a>
+        </div>
+      </div>
+      <div class="our-left1">
+        <div class="cr_btn1">
+          <a href="#">BOGOR</a>
+        </div>
+      </div>
+      <div class="clearfix"> </div>
+      
+        <li><a href="#"><i class="mail"> </i>Admin@shopzone.com </a></li>
+      
+    </div>
+    <div class="clearfix"> </div>
+      <p>Copyrights © 2017 ShopZone. All rights reserved  <a href="http://w3layouts.com/"></a></p>
+  </div>
+</div>
+<script>
+$(document).ready(function(){
+
+$(".search").keyup(function() {
+var searchbox = $(this).val();
+var dataString = 'searchword='+ searchbox;
+
+if(searchbox=='' || searchbox==' '){
+    $("#display").hide();
+} else
+{
+
+$.ajax({
+type: "POST",
+url: "/index/search/",
+data: dataString,
+cache: false,
+success: function(html)
+{ $("#display").html(html).show();        }
+
+});
+}return false;    
+
+
+});
+    });
+
+
+</script>
+<?php
+//   include 'search.phtml';
+?>
+
+
+
+</body>
+</html>

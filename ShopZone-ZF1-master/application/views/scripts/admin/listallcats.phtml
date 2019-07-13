@@ -1,0 +1,49 @@
+
+
+    
+                <div class="btn-group-justified">
+                    <div class='btn-group'>
+
+<td>  <a  href="/admin/addcat"><button class="btn btn-primary" type="button" name="button"> Add New Category  </button></a> </td>
+
+  
+
+</div>
+                </div>
+<table class="table">        
+  <thead>
+  <tr>
+    <th>#</th>
+    <th>Name</th>
+    
+    <th>Actions</th>
+  </tr>
+</thead>
+<tbody>
+
+              <?php
+
+
+
+
+
+    foreach($this->categories as $key => $value)
+    {
+            ?>
+    <tr>
+        
+        <td> <?= $value['id'] ?> </td>
+        <td><?= $value['name'] ?></td>
+      
+        
+            
+        <td>  <a  href="<?= '/admin/editcat/cid/'.$value['id'] ?>"><button class="btn btn-default" type="button" name="button"> edit  </button></a> </td>
+        <td>  <a  href="<?= '/admin/deletecat/cid/'.$value['id'] ?>"><button class="btn btn-danger" type="button" name="button"> Delete  </button></a> </td> 
+        
+			    </tr>
+    <?php } ?>                        
+			  </tbody>
+
+
+		</table>
+            

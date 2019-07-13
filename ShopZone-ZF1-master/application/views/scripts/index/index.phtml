@@ -1,0 +1,174 @@
+<html>
+<head>
+
+<!--  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+<!--
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+ 
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
+
+<style>
+.img{
+    padding-left: 30px;
+}
+$('.carousel').carousel({
+  interval: 2000
+})
+.carousel-inner{
+  margin-top: 15px;
+}
+
+</style>
+
+</head>
+<body>
+<div class="container">
+<!--<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h1><center>
+<?php // echo "Welcome to ShopZone" ?>
+ </center></h1>
+ </div>
+<table class="table table-striped table-bordered">
+    <div class="row">
+  <div class="col-md-8"><th>ShopZone</th></div>
+  
+  
+ 
+
+</div>
+
+
+
+<tr>
+<td> <a  href='/index/list-category'> Departments </a></td>
+</tr>
+
+</table>
+
+
+</div>-->
+
+
+
+
+
+<!-- Carousel
+    ================================================== -->
+
+  </style>
+<div style="margin-top:50px" id="myCarousel" class="carousel slide" data-ride="carousel">
+      <!-- Indicators -->
+      <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner" role="listbox">
+        <?php 
+        $counter=0;
+        foreach ($this->select_image as $key => $value) {
+          if($counter==0)
+          {
+
+          ?>
+
+        <div class="item active">
+            <img class="first-slide" src="<?php $this->baseUrl() ?><?="/".$value['image'] ?>" alt="First slide">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>Choose What You Want</h1>
+              <p><a class="btn btn-lg btn-primary" href="<?=$value['url']?>" role="button">Go To Watch</a></p>
+            </div>
+          </div>
+        </div>
+        <?php }else{?>
+        <div class="item">
+          <img class="second-slide" src="<?=$value['image'] ?>" alt="Second slide">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>Choose What You Want</h1>
+              
+              <p><a class="btn btn-lg btn-primary" href="<?=$value['url']?>" role="button">Go To Watch</a></p>
+            </div>
+          </div>
+        </div>
+  <?php } $counter++; }?>
+<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+    
+ <!-- /.carousel --></div>
+      <center style="margin-top:50px">
+          <?php if($this->language->type == "En") { ?>
+          <h2>Hight Product</h2>
+
+            <?php } else if($this->language->type == "Ar") { ?>
+          <h2>اعلي المنتجات</h2>
+
+            <?php } ?>
+
+      </center>
+   
+      <div class="row" style="margin-top:50px">
+<?php 
+foreach ($this->rate_product as $key => $value) {?>
+
+
+  <div class="col-sm-6 col-md-3">
+      <div class="thumbnail" style="height:450px">
+          <a href="<?='index/details-Product/uid/'.$value['id']?>">
+          <img style="margin-top:20px" class="img" src="<?php $this->baseUrl() ?><?="/".$value['picture'] ?>"  width="212px" alt=<?=$value['name']?>>
+          </a>
+          
+          <div class="caption">
+         <?php if($this->language->type == "En") { ?>
+          
+          <h3><?= $this->product_data['name'] ?></h3>
+
+          
+
+            <?php } else if($this->language->type == "Ar") { ?>
+            
+            <h3><?= $this->product_data['ar_name'] ?></h3>
+            
+            <?php }?>
+        <p>Price: <?=$value['price'] ?></p>
+         <p>Quantity: <?=$value['quantity'] ?></p>
+      </div>
+    </div>
+  </div>
+
+<?php
+}
+?>
+</div>
+
+
+
+</body>
+
+</html>
+
+<!-- 
+  echo "<tr>
+  <td>".$value['name']."</td><td>".$value['description'].$value['price'].$value['quantity']."<img src=".$value['picture'].">"."</td>".
+"<td> <a class='btn btn-primary' href='/index/details-Product/uid/".$value['id']."'> QuickLook </a></td>"
+."</tr>";
+}
+
+foreach ($this->select_image as $key => $value) {
+
+  echo "<tr>
+  <td>"."<img src=".$value['image'].">"."</td>".
+"<td> <a class='btn btn-primary' href='/index/details-Product/uid/".$value['url']."'> QuickLook </a></td>"
+."</tr>";
+
+}
+
+?> -->

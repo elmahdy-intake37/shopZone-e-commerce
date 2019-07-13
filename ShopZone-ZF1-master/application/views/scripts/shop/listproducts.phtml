@@ -1,0 +1,89 @@
+<div class="container">
+<table class="table">
+     <div class="form-group">
+         <div class="btn-group-justified">
+             <div class='btn-group'>   
+
+ <a href="/shop/addproduct" ><button class="btn btn-primary"  type="button" name="button"> Add Product </button></a>  
+             </div>
+         </div>
+     </div>
+    <thead>
+  <tr>
+    <th>#</th>
+    <th>Name</th>
+    <th>Picture</th>
+    <th>Description</th>
+    <th>Price</th>
+    <th>Category</th>
+    <th>Actions</th>
+  </tr>
+</thead>
+<tbody>
+
+              <?php
+
+
+
+
+
+    foreach($this->products as $key => $value)
+    {
+            ?>
+    <tr>
+        
+        <td> <?= $value['id'] ?> </td>
+        
+         <?php if($this->language->type=="En"){ ?>
+        <td><?= $value['name'] ?></td>
+        <td><?= "<img src="."\""."/".$value['picture']."\""."alt='product pic' height='42' width='42'>" ?></td>
+        <td><?= $value['description'] ?></td>
+         <?php } if($this->language->type=="Ar"){ ?>
+        <td><?= $value['ar_name'] ?></td>
+        <td><?= "<img src="."\""."/".$value['picture']."\""."alt='product pic' height='42' width='42'>" ?></td>
+        <td><?= $value['description_ar'] ?></td>
+
+        <?php } ?>
+        
+        <td><?= $value['price'] ?></td>
+        <td><?= $value['category'] ?></td>            
+        <td> <a href="<?= '/shop/productdetails/pid/'.$value['id'] ?>" ><button class="btn btn-primary"  type="button" name="button"> Details </button></a> </td>
+        <td>  <a  href="<?= '/shop/editproduct/pid/'.$value['id'] ?>"><button class="btn btn-default" type="button" name="button"> edit  </button></a> </td>
+        <td>  <a  href="<?= '/shop/deleteproduct/pid/'.$value['id'] ?>"><button class="btn btn-danger" type="button" name="button"> Delete  </button></a> </td>  
+
+        <td>  <a  href="<?= '/shop/addoffer/pid/'.$value['id'] ?>"><button class="btn btn-warning" type="button" name="button"> Add Offer  </button></a> </td> 
+        <td> <a href="<?= '/shop/productstatic/pid/'.$value['id'] ?>" ><button class="btn btn-primary"  type="button" name="button"> Statistics </button></a> </td>  
+        
+        
+        
+        
+			    </tr>
+			    <?php } ?>
+			  </tbody>
+
+
+		</table>
+<script>
+		$(document).ready(function(){
+           $(document).on('click', ".start", function(e) {
+                $.ajax({
+                    url: "/customer-user/add-to-wish-list",
+                    type: "GET",
+                    dataType:'json',
+                    context: this,
+                    data: {product_id: $(this).attr("data-product_id"), user_id : $(this).attr("data-user_id")},
+                    success: function(){
+                        console.log(1);
+                        $(this).text('Remove from wish list').removeClass('add-to-wishlist btn-primary').addClass('remove-from-wishlist btn-danger');                     
+
+                    },
+                    error:function (xhr, ajaxOptions, thrownError){
+                        console.log(xhr);
+                        console.log(ajaxOptions);
+                        console.log(thrownError);
+                     } 
+                 });
+           
+            });
+            </script>
+</div>

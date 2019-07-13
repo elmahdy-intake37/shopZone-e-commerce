@@ -1,0 +1,22 @@
+<div class="container">
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h1><center><?php
+
+echo $this->user_data['name'];
+
+     ?></center></h1>
+  </div>
+  <div class="panel-body">
+ 
+
+<table>
+	<tr><th>Email:</th><td><?php echo $this->user_data['email'].""?> </td></tr>
+	<tr><th>Address:</th> <td><?php echo $this->user_data['address'].""?> </td></tr>
+	<tr><th>Type: </th> <td><?php echo $this->user_data['type'].""?> </td></tr>
+	<tr><th>Is Active: </th> <td><?php echo $this->user_data['is_active'].""?> </td></tr>
+
+
+</table>
+  </div>
+</div>

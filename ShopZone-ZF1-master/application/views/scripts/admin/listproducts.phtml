@@ -1,0 +1,81 @@
+<html lang="ar" meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"">
+
+
+<head>
+    
+
+</head>
+<body>
+<table class="table">
+<thead>
+  <tr>
+    <th>#</th>
+    <th>Name</th>
+    <th>Picture</th>
+    <th>Description</th>
+    <th>Price</th>
+    <th>Category</th>
+    <th>Actions</th>
+  </tr>
+</thead>
+<tbody>
+
+              <?php
+
+
+
+
+
+    foreach($this->products as $key => $value)
+    {
+            ?>
+    <tr>
+        
+        <td> <?= $value['id'] ?> </td>
+        <td><?= $value['name'] ?></td>
+        <td><?= "<img src="."\""."/".$value['picture']."\""."alt='product pic' height='42' width='42'>" ?></td>
+        <td><?= $value['description'] ?></td>
+        <td><?= $value['price'] ?></td>
+        <td><?= $value['category'] ?></td>            
+        <td> <a href="<?= '/admin/productdetails/pid/'.$value['id'] ?>" ><button class="btn btn-primary"  type="button" name="button"> Details </button></a> </td>
+        <td>  <a  href="<?= '/admin/editproduct/pid/'.$value['id'] ?>"><button class="btn btn-default" type="button" name="button"> edit  </button></a> </td>
+        <td>  <a  href="<?= '/admin/deleteproduct/pid/'.$value['id'] ?>"><button class="btn btn-danger" type="button" name="button"> Delete  </button></a> </td>  
+
+        <td> <a href="<?= '/admin/productstatic/pid/'.$value['id'] ?>" ><button class="btn btn-primary"  type="button" name="button"> Statistics </button></a> </td>  
+        
+        
+        
+        
+			    </tr>
+			    <?php } ?>
+			  </tbody>
+
+
+		</table>
+<script>
+		$(document).ready(function(){
+           $(document).on('click', ".start", function(e) {
+                $.ajax({
+                    url: "/customer-user/add-to-wish-list",
+                    type: "GET",
+                    dataType:'json',
+                    context: this,
+                    data: {product_id: $(this).attr("data-product_id"), user_id : $(this).attr("data-user_id")},
+                    success: function(){
+                        console.log(1);
+                        $(this).text('Remove from wish list').removeClass('add-to-wishlist btn-primary').addClass('remove-from-wishlist btn-danger');                     
+
+                    },
+                    error:function (xhr, ajaxOptions, thrownError){
+                        console.log(xhr);
+                        console.log(ajaxOptions);
+                        console.log(thrownError);
+                     } 
+                 });
+           
+            });
+            </script>
+
+        </body>
+        </html>

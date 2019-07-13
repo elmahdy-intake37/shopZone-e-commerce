@@ -1,0 +1,36 @@
+<table class="table">
+<thead>
+  <tr>
+    <th>#</th>
+    <th>Bought</th>
+    <th>Gained</th>
+    <th>Top_purchased</th>
+    <th>Actions</th>
+  </tr>
+</thead>
+<tbody>
+
+
+
+
+    <tr>
+        
+        <td> <?= $this->product['id'] ?> </td>
+        <td><?= $this->product['bought'] ?></td>
+        <td><?= $this->product['bought']* $this->product['price'] ?></td>
+        <td>
+        <a href="<?= '/admin/productdetails/pid/'.$value['id'] ?>" > <?= $this->statics[0]['name'];
+
+         ?> </button></a>
+
+        </td>
+            
+        <td> <a href="<?= '/admin/listproducts' ?>" ><button class="btn btn-primary"  type="button" name="button"> Back </button></a> </td>
+
+     </tr>
+ 
+              </tbody>
+
+
+        </table>
+        

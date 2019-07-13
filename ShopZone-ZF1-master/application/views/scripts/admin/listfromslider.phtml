@@ -1,0 +1,49 @@
+<table class="table">
+<thead>
+  <tr>
+    <th>#</th>
+    
+    <th>Image</th>
+    <th>Url</th>
+    
+    <th>Actions</th>
+  </tr>
+</thead>
+<tbody>
+
+              <?php
+
+
+
+
+
+    foreach($this->slider_admin as $key => $value)
+    {
+            ?>
+    <tr>
+        
+        <td> <?= $value['id'] ?> </td>
+        <td><img  src="/<?=$value['image']?>" alt="Error uplode" height="50px" width="50px"></td>
+        <td><?= $value['url'] ?></td>
+        
+            
+        <td> <a href="<?= '/admin/detailslider/sid/'.$value['id'] ?>" ><button class="btn btn-primary"  type="button" name="button"> Details </button></a> </td>
+        <td>  <a  href="<?= '/admin/editslider/sid/'.$value['id'] ?>"><button class="btn btn-default" type="button" name="button"> edit  </button></a> </td>
+        <td>  <a  href="<?= '/admin/deletefromslider/sid/'.$value['id'] ?>"><button class="btn btn-danger" type="button" name="button"> Delete  </button></a> </td> 
+        
+
+        <?php } ?>
+        
+        
+        
+			    </tr>
+                            
+			  </tbody>
+
+
+		</table>
+            
+			    
+
+
+	

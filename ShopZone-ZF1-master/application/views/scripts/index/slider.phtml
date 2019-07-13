@@ -1,0 +1,31 @@
+<div class="container">
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h1><center>
+<?php echo "Wish-List" ?>
+ </center></h1>
+ </div>
+<table class="table table-striped table-bordered">
+	
+  <div ><th>Your Name</th><th>product</th></div>
+ 
+  
+ 
+
+</div>
+
+
+<?php
+foreach ($this->select_image as $key => $value) {?>
+
+<tr>
+<td><?= $value['image'] ?></td>
+<td><img src=<?=$value['url']?>></td>
+<td> <a class='btn btn-primary' href=<?='/index/details-Product/uid/'.$value['id']?>> QuickLook </a></td>
+</tr>
+
+  
+
+<?php
+}
+?>

@@ -1,0 +1,36 @@
+<div class="container">
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h1><center>
+<?php echo "Wish-List" ?>
+ </center></h1>
+ </div>
+<table class="table table-striped table-bordered">
+	
+  <div ><th>Your Name</th><th>product</th></div>
+ 
+  
+ 
+
+</div>
+
+<?php
+foreach ($this->rate_product as $key => $value) {?>
+
+  <tr>
+  <?php if($this->language->type == "En")
+  {?>
+<td> <?= $value['name'] ?> </td>
+<td> <?= $value['description'] ?> </td>
+<?php } else if($this->language->type == "Ar") { ?>
+<td> <?= $value['ar_name'] ?> </td>
+<td> <?= $value['description_ar'] ?> </td>
+<?php } ?>
+
+<td><?= $value['price'] ?> </td>
+
+<td><?= $value['quantity'] ?> </td>
+<td><img class="img" src=/<?=$value['picture']?> ></td>
+<td> <a class='btn btn-primary' href="<?='/index/details-Product/uid/'.$value['id']?>"> QuickLook </a></td>
+  </tr>
+<?php } ?> 

@@ -1,0 +1,246 @@
+<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+<style>
+@import url(http://fonts.googleapis.com/css?family=Roboto:500,100,300,700,400);
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: roboto;
+}
+
+
+.cont {
+  width: 93%;
+  max-width: 350px;
+  text-align: center;
+  margin: 4% auto;
+  padding: 0px ;
+  padding-bottom: 60px;
+  background: #FFFFF;
+  color: #EEE;
+  border-radius: 5px;
+  border: thin solid #444;
+  overflow: hidden;
+  height: 20px
+}
+
+hr {
+  margin: 20px;
+  border: none;
+  border-bottom: thin solid rgba(255,255,255,.1);
+}
+
+div.title { font-size: 2em; }
+
+h1 span {
+  font-weight: 300;
+  color: #Fd4;
+}
+
+div.stars {
+  width: 270px;
+  display: inline-block;
+}
+
+input.star { display: none; }
+
+label.star {
+  float: right;
+  padding: 10px;
+  font-size: 36px;
+  color: #444;
+  transition: all .2s;
+}
+
+input.star:checked ~ label.star:before {
+  content: '\f005';
+  color: #FD4;
+  transition: all .25s;
+}
+
+input.star-5:checked ~ label.star:before {
+  color: #FE7;
+  text-shadow: 0 0 20px #952;
+}
+
+input.star-1:checked ~ label.star:before { color: #F62; }
+
+label.star:hover { transform: rotate(-15deg) scale(1.3); }
+
+label.star:before {
+  content: '\f006';
+  font-family: FontAwesome;
+}
+</style>
+<link href="http://www.cssscript.com/wp-includes/css/sticky.css" rel="stylesheet" type="text/css">
+
+
+
+<div class="container">
+    <div class="row">
+<?php
+foreach ($this->product as $key => $value) { ?>
+
+        <div class="col-sm-4 col-md-4">
+            <a class='btn btn-primary' href='/user/detailsproduct/uid/<?=$value['id']?>' ><img src="<?="/".$value['picture']?>"
+            alt="" class="img-rounded img-responsive" />
+            </a>
+            <div class="cont">
+  <div class="stars">
+      <?php
+      $value['rates_avg'] = round($value['rates_avg']);
+      if ($value['rates_avg'] == 5)
+      {
+      ?>    
+      
+      <form method="post" action="/user/listproduct">
+          <input class="star star-5" id=<?="star".$value['id']."5" ?> type="radio" name="star" value="5" checked onclick="submit()"/>
+      <label class="star star-5" for=<?="star".$value['id']."5" ?>></label>
+      <input class="star star-4" id=<?="star".$value['id']."4" ?> type="radio" name="star" value="4"  onclick="submit()"/>
+      <label class="star star-4" for=<?="star".$value['id']."4" ?>></label>
+      <input class="star star-3" id=<?="star".$value['id']."3" ?> type="radio" name="star" value="3" onclick="submit()"/>
+      <label class="star star-3" for=<?="star".$value['id']."3" ?>></label>
+       <input class="star star-3" id=<?="star".$value['id']."2" ?> type="radio" name="star" value="2" onclick="submit()"/>
+      <label class="star star-2" for=<?="star".$value['id']."2" ?>></label>
+      <input class="star star-1" id=<?="star".$value['id']."1" ?> type="radio" name="star" value="1" onclick="submit()" />
+      <label class="star star-1" for=<?="star".$value['id']."1" ?>></label>
+      <input type="text" value=<?=$value['id']?> name="product" style="display:none"/>
+    </form>
+      <?php }
+      else if($value['rates_avg'] == 4){
+                ?>
+      <form method="post" action="/user/listproduct">
+          <input class="star star-5" id=<?="star".$value['id']."5" ?> type="radio" name="star" value="5"  onclick="submit()"/>
+      <label class="star star-5" for=<?="star".$value['id']."5" ?>></label>
+      <input class="star star-4" id=<?="star".$value['id']."4" ?> type="radio" name="star" value="4" checked onclick="submit()"/>
+      <label class="star star-4" for=<?="star".$value['id']."4" ?>></label>
+      <input class="star star-3" id=<?="star".$value['id']."3" ?> type="radio" name="star" value="3" onclick="submit()"/>
+      <label class="star star-3" for=<?="star".$value['id']."3" ?>></label>
+       <input class="star star-3" id=<?="star".$value['id']."2" ?> type="radio" name="star" value="2" onclick="submit()"/>
+      <label class="star star-2" for=<?="star".$value['id']."2" ?>></label>
+      <input class="star star-1" id=<?="star".$value['id']."1" ?> type="radio" name="star" value="1" onclick="submit()" />
+      <label class="star star-1" for=<?="star".$value['id']."1" ?>></label>
+      <input type="text" value=<?=$value['id']?> name="product" style="display:none"/>
+    </form>
+      
+      
+      <?php 
+      }
+      else if($value['rates_avg'] == 3){
+                ?>
+      <form method="post" action="/user/listproduct">
+          <input class="star star-5" id=<?="star".$value['id']."5" ?> type="radio" name="star" value="5"  onclick="submit()"/>
+      <label class="star star-5" for=<?="star".$value['id']."5" ?>></label>
+      <input class="star star-4" id=<?="star".$value['id']."4" ?> type="radio" name="star" value="4"  onclick="submit()"/>
+      <label class="star star-4" for=<?="star".$value['id']."4" ?>></label>
+      <input class="star star-3" id=<?="star".$value['id']."3" ?> type="radio" name="star" value="3" checked onclick="submit()"/>
+      <label class="star star-3" for=<?="star".$value['id']."3" ?>></label>
+       <input class="star star-3" id=<?="star".$value['id']."2" ?> type="radio" name="star" value="2" onclick="submit()"/>
+      <label class="star star-2" for=<?="star".$value['id']."2" ?>></label>
+      <input class="star star-1" id=<?="star".$value['id']."1" ?> type="radio" name="star" value="1" onclick="submit()" />
+      <label class="star star-1" for=<?="star".$value['id']."1" ?>></label>
+      <input type="text" value=<?=$value['id']?> name="product" style="display:none"/>
+    </form>
+      
+      
+      
+      <?php }
+      else if($value['rates_avg'] == 2){
+                ?>
+      <form method="post" action="/user/listproduct">
+          <input class="star star-5" id=<?="star".$value['id']."5" ?> type="radio" name="star" value="5"  onclick="submit()"/>
+      <label class="star star-5" for=<?="star".$value['id']."5" ?>></label>
+      <input class="star star-4" id=<?="star".$value['id']."4" ?> type="radio" name="star" value="4"  onclick="submit()"/>
+      <label class="star star-4" for=<?="star".$value['id']."4" ?>></label>
+      <input class="star star-3" id=<?="star".$value['id']."3" ?> type="radio" name="star" value="3" onclick="submit()"/>
+      <label class="star star-3" for=<?="star".$value['id']."3" ?>></label>
+       <input class="star star-3" id=<?="star".$value['id']."2" ?> type="radio" name="star" value="2" checked onclick="submit()"/>
+      <label class="star star-2" for=<?="star".$value['id']."2" ?>></label>
+      <input class="star star-1" id=<?="star".$value['id']."1" ?> type="radio" name="star" value="1" onclick="submit()" />
+      <label class="star star-1" for=<?="star".$value['id']."1" ?>></label>
+      <input type="text" value=<?=$value['id']?> name="product" style="display:none"/>
+    </form>
+     
+      
+      
+      <?php }
+      else if($value['rates_avg'] == 1){
+                ?>
+      <form method="post" action="/user/listproduct">
+          <input class="star star-5" id=<?="star".$value['id']."5" ?> type="radio" name="star" value="5"  onclick="submit()"/>
+      <label class="star star-5" for=<?="star".$value['id']."5" ?>></label>
+      <input class="star star-4" id=<?="star".$value['id']."4" ?> type="radio" name="star" value="4"  onclick="submit()"/>
+      <label class="star star-4" for=<?="star".$value['id']."4" ?>></label>
+      <input class="star star-3" id=<?="star".$value['id']."3" ?> type="radio" name="star" value="3" onclick="submit()"/>
+      <label class="star star-3" for=<?="star".$value['id']."3" ?>></label>
+       <input class="star star-3" id=<?="star".$value['id']."2" ?> type="radio" name="star" value="2" onclick="submit()"/>
+      <label class="star star-2" for=<?="star".$value['id']."2" ?>></label>
+      <input class="star star-1" id=<?="star".$value['id']."1" ?> type="radio" name="star" value="1" checked onclick="submit()" />
+      <label class="star star-1" for=<?="star".$value['id']."1" ?>></label>
+      <input type="text" value=<?=$value['id']?> name="product" style="display:none"/>
+    </form>
+      
+      
+      
+      <?php }
+      else {
+                ?>
+      <form method="post" action="/user/listproduct">
+          <input class="star star-5" id=<?="star".$value['id']."5" ?> type="radio" name="star" value="5"  onclick="submit()"/>
+      <label class="star star-5" for=<?="star".$value['id']."5" ?>></label>
+      <input class="star star-4" id=<?="star".$value['id']."4" ?> type="radio" name="star" value="4"  onclick="submit()"/>
+      <label class="star star-4" for=<?="star".$value['id']."4" ?>></label>
+      <input class="star star-3" id=<?="star".$value['id']."3" ?> type="radio" name="star" value="3" onclick="submit()"/>
+      <label class="star star-3" for=<?="star".$value['id']."3" ?>></label>
+       <input class="star star-3" id=<?="star".$value['id']."2" ?> type="radio" name="star" value="2" onclick="submit()"/>
+      <label class="star star-2" for=<?="star".$value['id']."2" ?>></label>
+      <input class="star star-1" id=<?="star".$value['id']."1" ?> type="radio" name="star" value="1" onclick="submit()" />
+      <label class="star star-1" for=<?="star".$value['id']."1" ?>></label>
+      <input type="text" value=<?=$value['id']?> name="product" style="display:none"/>
+    </form>
+      <?php } ?>
+      
+      
+  </div>
+</div>
+     </div>
+        <div class="col-sm-2 col-md-2">
+            <blockquote>
+              <?php if($this->language->type == "En") { ?>
+                <p><?=$value['name']?></p>
+                <br>
+                <small><cite title="Source Title"><?=$value['description']?> <i class="glyphicon glyphicon-map-marker"></i></cite></small>
+             <?php } elseif ($this->language->type == "Ar") {?>
+              <p><?=$value['ar_name']?></p>
+                <br>
+                <small><cite title="Source Title"><?=$value['description_ar']?> <i class="glyphicon glyphicon-map-marker"></i></cite></small>
+
+                <?php } ?>
+
+            </blockquote>
+            <p>
+            <p> <i class="fa fa-dollar"></i> Price : <?=$value['price']?>
+                <br
+                />
+            <i class="fa fa-codepen"></i> On Stock : <?=$value['quantity']?>
+                <form method="POST" action="/user/addtocart">
+                <i class="fa fa-plus-square"></i> Quantity : 
+                <input type='number' name='quantity' value='1' min='1' max="<?=$value['quantity']?>" width="5px"/><br>
+                <input type='hidden' name='product' value="<?=$value['id']?>">
+                <input type='hidden' name='customer' value=<?=$_SESSION["Zend_Auth"]["storage"]->id?>>
+                <br /> <i class="fa fa-refresh fa-spin"></i> Added On : <?=$value['date']?> </p>
+            <br>
+                <button type='submit' class='btn btn-primary'>Add to Cart</button>
+                </form>
+ <a href="<?= '/user/inserwishlist/pid/'.$value['id'] ?>" ><button class="btn btn-primary"  type="submit" name="button"> Add to WishList </button></a> 
+
+
+            
+            
+            </p>
+        </div>
+<?php } ?>
+        
+    </div>
+</div>
+

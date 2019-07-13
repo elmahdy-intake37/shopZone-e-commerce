@@ -1,0 +1,77 @@
+<table class="table">
+<thead>
+  <tr>
+    <th>#</th>
+    <th>Name</th>
+    <th>Picture</th>
+    <th>Description</th>
+    <th>Price</th>
+    <th>Category</th>
+    <th>Actions</th>
+  </tr>
+</thead>
+<tbody>
+
+              <?php
+
+
+
+
+
+    
+              
+            ?>
+    <tr>
+        
+        <td> <?= $this->product['id'] ?> </td>
+        <td><?= $this->product['name'] ?></td>
+        <td><?= "<img src="."\""."/".$this->product['picture']."\""."alt='product pic' height='42' width='42'>" ?></td>
+        <td><?= $this->product['description'] ?></td>
+        <td><?= $this->product['price'] ?></td>
+        <td><?= $this->product['category'] ?></td>
+        
+            
+        <td>  <a  href="<?= '/admin/editproduct/pid/'.$this->product['id'] ?>"><button class="btn btn-default" type="button" name="button"> edit  </button></a> </td>
+        <td>  <a  href="<?= '/admin/deleteproduct/pid/'.$this->product['id'] ?>"><button class="btn btn-danger" type="button" name="button"> Delete  </button></a> </td>    
+        
+        
+        
+        
+			    </tr>
+                            
+</table>
+
+                
+<div id="comments">
+<?php                
+foreach ($this->allcoments as $key => $value) {
+
+  echo "<tr>
+  <td>".$value['customer_name']."</td>".
+"</tr>".
+"<tr>"
+  ."<td>".$value['comment']."</td>"."<td>".$value['date']."</td>"."</tr>";
+}
+                foreach ($this->comments as $values){
+                
+                    
+                    echo "<div id="."\"".$values['id']."\"".">".$values['comment']."</div>"."<br>";
+                
+                    
+                }
+
+                ?>          
+    
+    
+</div>
+<script type="text/javascript">
+    $(document).ready(function(){
+        #('submitcomment').on('click',function(){
+            
+        })
+      });
+    </script>
+
+                 <?php
+                echo $this->comment_form;
+                                ?>

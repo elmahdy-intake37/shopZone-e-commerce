@@ -1,0 +1,19 @@
+
+<div class="container">
+<div class="panel panel-primary">
+  <div class="panel-heading">
+  <center>
+  	<h1> Login</h1>
+  </center>
+  </div>
+   <div class="panel-body">
+   <?php echo $this->loginform_var;?>
+   <?php echo '<a  class="btn btn-primary" href="' . htmlspecialchars( $this->facebookUrl) . '"> Log in
+with Facebook! </a>'; ?>
+    <a class="btn btn-danger" href="/index/googlelogin">Login With Google</a>
+
+       
+       <a  class="btn btn-danger" href="/index/ressetpassword"> Reset password </a>
+   </div>
+   </div>
+   </div>

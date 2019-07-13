@@ -1,0 +1,35 @@
+<div class="container">
+<div class="row" style="margin-top:50px">
+<?php 
+foreach ($this->product as $key => $value) {?>
+
+
+  <div class="col-sm-6 col-md-3">
+      <div class="thumbnail" style="height:450px">
+         <a href="<?='/index/details-Product/uid/'.$value['id'] ?>">
+				   	   	 <img src="<?php  echo "/".$value['picture'];?>" class="img-responsive" alt="" />
+					   	  </a>
+          
+          <div class="caption">
+         <?php if($this->language->type == "En") { ?>
+          
+          <h3><?= $this->product_data['name'] ?></h3>
+
+          
+
+            <?php } else if($this->language->type == "Ar") { ?>
+            
+            <h3><?= $this->product_data['ar_name'] ?></h3>
+            
+            <?php }?>
+        <p>Price: <?=$value['price'] ?></p>
+         <p>Quantity: <?=$value['quantity'] ?></p>
+      </div>
+    </div>
+  </div>
+
+<?php
+}
+?>
+</div>
+</div>

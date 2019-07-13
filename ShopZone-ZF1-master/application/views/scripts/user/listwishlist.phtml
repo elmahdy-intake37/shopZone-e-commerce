@@ -1,0 +1,35 @@
+<div class="container">
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h1><center>
+<?php echo "Wish-List" ?>
+ </center></h1>
+ </div>
+<table class="table table-striped table-bordered">
+	
+  <div ><th>Your Name</th><th>product</th></div>
+ 
+  
+ 
+
+</div>
+
+
+<?php
+foreach ($this->model as $key => $value) {?>
+
+ <tr>
+<td><?=$value['customer_name']?> </td>
+<?php if( $this->language->type =="En"){ ?>
+<td><?= $value['product_name'] ?></td>
+<?php } elseif ( $this->language->type =="Ar") {?>
+<td><?= $value['product_ar_name'] ?></td>
+	
+<?php } ?>
+<td> <a class='btn btn-primary' href=<?='/user/delwishlist/wid/'.$value['id']?>> Remove </a></td></tr>
+
+
+<?php }
+ ?>
+
+</table>

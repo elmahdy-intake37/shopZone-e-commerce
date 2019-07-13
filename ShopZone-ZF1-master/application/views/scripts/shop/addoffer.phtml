@@ -1,0 +1,85 @@
+<div class="container">
+    <div class="row">
+    <div class="col-sm-6">
+    <form method="POST" action="/shop/addoffer">
+
+    
+        <div class="form-group">
+        <?php
+echo $this->offer_form->getElement('offer_per');
+?>
+                </div>
+        
+        
+<div>
+    <div>
+        <div class="form-group">
+            <label>Offer Start Date</label>
+            <div class='input-group date' id='datetimepicker10'>
+                
+<?php
+echo $this->offer_form->getElement('offer_start');
+ ?> 
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar">
+                    </span>
+                </span>
+            </div>
+        </div>
+            <div class="form-group">
+                        <label>Offer End Date</label>
+            <div class='input-group date' id='datetimepicker1'>
+            
+<?php
+echo $this->offer_form->getElement('offer_end');
+ ?> 
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </span>                
+            </div> 
+            </div>
+        </div>
+    
+    <script type="text/javascript">
+        var currentDate = new Date();
+        $(function () {
+            $('#datetimepicker10').datetimepicker({
+                 //showOn: 'focus',
+                viewMode: 'days',
+                format: 'YYYY-MM-DD',
+                minDate: currentDate
+            });
+        });
+    </script>
+        <script type="text/javascript">
+            var currentDate = new Date();
+        $(function () {
+            $('#datetimepicker1').datetimepicker({
+                // showOn: 'focus',
+                viewMode: 'days',
+                format: 'YYYY-MM-DD',
+                minDate: currentDate
+            });
+        });
+    </script>
+
+</div>
+        <input type="text" value="<?=$this->p_id?>" name="pid" style="display:none"/>
+<div>
+    <div >
+        <div class="btn-group-justified">
+
+<?php
+echo "<div class='btn-group'>".$this->offer_form->getElement('submit')."</div>";
+echo "<div class='btn-group'>".$this->offer_form->getElement('reset')."</div>";
+?>
+             
+            </div>
+        </div>
+    </div>
+    
+
+        </form>
+</div>
+    </div>
+    </div>

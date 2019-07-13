@@ -1,0 +1,68 @@
+<html>
+<head></head>
+<body>
+<div class="container">
+<div class="women_main">
+	<!-- start content -->
+			<div class="row single">
+				<div class="col-md-9 det">
+				  <div class="single_left">
+					<div class="grid images_3_of_2">
+
+								<img  src="<?php echo "/".$this->product_data['picture']?>" width="250" height="400" />
+							
+						 <div class="clearfix"></div>		
+				  </div>
+				  <div class="desc1 span_3_of_2">
+					<?php if($this->language->type == "En") { ?>
+					
+					<h3><?= $this->product_data['name'] ?></h3>
+
+					
+
+			  		<?php } else if($this->language->type == "Ar") { ?>
+			  		
+			  		<h3><?= $this->product_data['ar_name'] ?></h3>
+			  		
+			  		<?php }?>
+					<span class="brand">Quantity: <?php echo $this->product_data['quantity']?></span>
+					<br>
+					<span class="code">Rate: <?php echo $this->product_data['rates_avg']?></span>
+
+					<?php if($this->language->type == "En") { ?>
+					
+					<h3><?= $this->product_data['name'] ?></h3>
+
+					
+
+			  		<?php } else if($this->language->type == "Ar") { ?>
+			  		
+			  		<h3><?= $this->product_data['ar_name'] ?></h3>
+			  		
+			  		<?php }?>
+			  		
+
+						<div class="price">
+							<span class="text">Price:</span>
+							<span class="price-new"><?php echo $this->product_data['price']?></
+						</div>
+				
+					<div class="btn_form">
+<!-- 						<a href="checkout.html">buy</a>
+ -->					</div>
+					<a href="/index/login"><span>login to save in wishlist </span></a>
+					
+			   	 </div>
+          	    <div class="clearfix"></div>
+          	   </div>
+          	    
+						 <div class="clearfix"></div>
+				     </div>
+		   	  </div>
+	       </div>
+	       <br>
+	       </body>
+	       </html>
+
+
+
